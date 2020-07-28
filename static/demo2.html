@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <!-- <li :style="{color: currentColor === index}" v-on:click="getColor(index)" v-for="(m, index) in movies">{{index}}-{{m}}</li> -->
+      <!-- <li :style="{fontSize: '50px',color: isColor}" v-on:click="getColor(index)" v-for="(m, index) in movies">{{index}}-{{m}}</li> -->
+      <!-- <li :class="{active: currentIndex === index}" v-on:click="getColor(index)" v-for="(m, index) in movies">{{index}}-{{m}}</li> -->
+      <li :class="{active: currentIndex === index}" @click="getColor(index)" v-for="(m, index) in movies">{{index}}-{{m}}</li>
+    </ul>
+  </div>
+</body>
+<style>
+  .active{
+    color: red;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      isActive: false,
+      isIndex: false,
+      isColor: 'black',
+      movies: ['AAA','BBB','CCC','DDD'],
+      currentIndex: 0
+    },
+    methods: {
+      getColor: function(index){
+        this.isColor = this.isColor == 'black'? 'red': 'black'
+        this.currentIndex = index
+        this.isActive = !this.isActive
+      }
+    }
+  })
+</script>
+</html>
