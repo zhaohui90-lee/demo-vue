@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <!-- <li v-for="(item, index) in names">{{index + 1}}.{{item}}</li> -->
+      <!-- 绑定key 提高插入值的性能 -->
+      <li v-for="(item, index) in names" :key="item">{{index + 1}}.{{item}}</li>
+    </ul>
+
+    <ul>
+      <!-- <li v-for="(value, key) in info">{{key}}-{{value}}</li> -->
+      <li v-for="(value, key, index) in info">{{index}}-{{key}}-{{value}}</li>
+    </ul>
+  </div>
+</body>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      names: ['张三','李四','王五','钱六'],
+      info: {
+        name: '张三',
+        age: 18,
+        height: 100
+      }
+    },
+    computed: {
+
+    }
+  })
+</script>
+</html>
