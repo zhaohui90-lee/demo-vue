@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  // 在ES6开发中优先使用const
+  const a = 9;
+  // const指向的对象不能修改，但是可以修改内部的属性
+  const obj = {
+    name: 'abc',
+    age: 20,
+    height: 1.88
+  }
+
+  console.log(obj);
+
+  obj.age = 30;
+  console.log(obj);
+</script>
+</html>

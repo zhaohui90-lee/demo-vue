@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="btn1Click">按钮1</button>
+    <button @click="btn2Click">按钮2</button>
+    <!-- 在定义方法时，我们需要event对象时，同时需要其他参数 -->
+    <!-- 在调用方式，如何手动的获取浏览器参数的event对象：$event -->
+    <button @click="btn3Click('abc',$event)">按钮3</button>
+    <button @click="btn4Click(123)">按钮4</button>
+  </div>
+</body>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      // event: 'code'
+    },
+    methods: {
+      btn1Click() {
+        console.log('btn1Click');
+      },
+      btn2Click(event) {
+        console.log(event);
+      },
+      btn3Click(param, event) {
+        console.log(param, event);
+      },
+      btn4Click(param){
+        console.log(param);
+      }
+    }
+  })
+</script>
+
+</html>

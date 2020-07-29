@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo1</title>
+</head>
+<body>
+  <button>按钮1</button>
+  <button>按钮2</button>
+  <button>按钮3</button>
+  <button>按钮4</button>
+  <button>按钮5</button>
+</body>
+<script>
+  // ES5之前因为if和for没有块级作用域的概念，必须要借助function的作用域来解决
+  // var 没有块级作用域的概念
+  var btn = document.getElementsByTagName('button');
+  // console.log(btn);
+  // for(var i = 0; i < btn.length;i++){
+  //   // console.log(btn[i]);
+  //   (function (number) {
+  //       btn[i].addEventListener('click',function () {
+  //       console.log('第' + number + '个按钮被点击');
+  //     })
+  //   })(i)
+    
+  // }
+  // console.log(i);
+
+  // ES6的let有自己的块级作用域
+  for (let j = 0; j < btn.length; j++) {
+    btn[j].addEventListener('click',function () {
+      console.log('第' + j + '个按钮被点击');
+    })
+  }
+
+  
+  // console.log(j);
+
+  // 没有块级作用域引起的问题
+  // if (true) {
+  //   var name = 'zhang san'
+  // }
+  // console.log(name);
+
+  // var func = function name(params) {
+    
+  // }
+</script>
+</html>
