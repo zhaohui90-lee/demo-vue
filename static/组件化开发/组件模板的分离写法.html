@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <cpn></cpn>
+</div>
+<!-- 组件内部不能访问Vue实例里面的标签 -->
+<template id="cpn">
+  <div>
+    <span>{{message}}</span>
+    <h2>呵呵呵</h2>
+    <h3>hahah</h3>
+  </div>
+</template>
+</body>
+<script>
+  // 组件内部也可以包含data属性 但是必须是以function返回一个实例对象 不能直接返回对象
+  // 为什么Vue设计的时候必须是一个function返回
+  // 1
+  Vue.component('cpn',{
+    template: '#cpn',
+    data() {
+      return {
+        message: 'cpn'
+      }
+    }
+  })
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好'
+    }
+  })
+</script>
+</html>

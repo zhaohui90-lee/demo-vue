@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<!-- 组件实例 核心思想 data函数返回的数据不共享 -->
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <h2>当前计数 {{counter}}</h2>
+    <button @click="decrement">-</button>
+    <button @click="increment">+</button>
+  </div>
+</template>
+</body>
+<script>
+<!-- function返回的对象具有独立的内存地址 保证组件在使用的时候不会相互影响 -->
+  Vue.component('cpn',{
+    template: '#cpn',
+    data() {
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      decrement() {
+        this.counter--
+      },
+      increment () {
+        this.counter++
+      }
+    }
+  })
+  const app = new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    }
+  })
+</script>
+
+<script>
+  function f () {
+    return {
+      name: 'aaa',
+      age: 18
+    }
+  }
+  let obj1 = f();
+  let obj2 = f();
+  let obj3 = f();
+  obj1.name = 'bbb';
+  console.log(obj1);
+  console.log(obj2);
+  console.log(obj3);
+  const obj = {
+    name: 'kobe'
+  }
+  let obj7 = obj;
+  let obj8 = obj;
+  obj.name = 'james';
+  console.log(obj7);
+  console.log(obj8);
+</script>
+</html>

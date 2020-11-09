@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <cpn1></cpn1>
+  <cpn2></cpn2>
+</div>
+</body>
+<template id="cpn1">
+  <div>
+    <h2>我是标题1</h2>
+    <p>内容：哈哈哈</p>
+  </div>
+</template>
+<template id="cpn2"></template>
+<script>
+  // 1.全局组件注册的语法糖 可以用对象替换Vue.extend
+  // const cpn1 = Vue.extend()
+  //2.注册组件
+  const cpn1 = Vue.component('cpn1',{
+    template: `
+      <div>
+        <h2>我是标题1</h2>
+        <p>内容：哈哈哈</p>
+      </div>
+    `
+  })
+
+  const app = new Vue({
+    el: '#app',
+    components: {
+      'cpn2': {
+        template: `
+          <div>
+            <h2>我是标题2</h2>
+            <p>内容：呵呵呵</p>
+          </div>
+    `
+      }
+    }
+  })
+</script>
+</html>

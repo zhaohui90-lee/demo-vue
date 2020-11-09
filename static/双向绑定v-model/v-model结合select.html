@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <select name="fruit" id="fruit" v-model="fruit">
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="苹果">苹果</option>
+    <option value="苹果">苹果</option>
+    <option value="苹果">苹果</option>
+  </select>
+  <h2>{{fruit}}</h2>
+  <br>
+  <!-- 值绑定 -->
+  <label v-for="item in originHobbies" :for="item">
+    <input type="checkbox" :id="item" :value="item" v-model="hobbies">{{item}}
+  </label>
+  <h2>{{hobbies}}</h2>
+</div>
+</body>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      fruit: '',
+      originHobbies: ['篮球', '足球', '羽毛球', '乒乓球'],
+      hobbies: []
+    }
+  })
+</script>
+</html>

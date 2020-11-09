@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <cpn :c-movies="movies" :c-message="message"></cpn>
+</div>
+</body>
+<template id="cpn">
+  <div>
+    <!--    <p>{{cMovies}}</p>-->
+    <ul>
+      <li v-for="item in cMovies">{{item}}</li>
+    </ul>
+    <h2>{{cMessage}}</h2>
+  </div>
+</template>
+<script>
+  <!-- 子组件 -->
+  const cpn = {
+    template: '#cpn',
+    // props: ['cMovies','cMessage']
+    props: {
+      // 验证数据 类型限制
+      // cMovies: Array,
+      // cMessage: String
+      // 2.提供一些默认值
+      cMessage: {
+        type: String,
+        default: 'aaaaaa',
+        require: true
+      },
+      cMovies: {
+        type: Array,
+        default: []
+        // default() {
+        //   return []
+        // }
+      }
+    }
+  }
+  // root组件
+  const app = new Vue({
+    el: '#app',
+    data: {
+      movies: ['AAA', 'BBB', 'CCC'],
+      message: '123456'
+    },
+    components: {
+      cpn
+    }
+  })
+</script>
+</html>

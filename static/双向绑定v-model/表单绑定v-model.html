@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表单绑定</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./vue-dusion-keyboard.js"></script>
+</head>
+<body>
+<div id="app">
+  <h2>充值金额：{{message}}</h2>
+  <!--  <input type="text" :value="message" @input="message = $event.target.value">-->
+  <!-- 等同于 -->
+  <input type="text" v-model="message" data-lock="lock" data-mode="num">
+  <!-- v-model原理 其实是一个语法糖 本质包含两个操作 -->
+  <!-- v-bind绑定一个value属性 -->
+  <!-- v-on指令给当前元素绑定input事件 -->
+  <div class="aaa">
+    <vue-dusion-keyboard
+      ref="keyboard"
+      observer
+      window
+      static
+      :forbidden="['hand', 'num', 'input_value']"
+      :blur-hide="false"
+      size="mini"
+    ></vue-dusion-keyboard>
+  </div>
+  
+</div>
+</body>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '0.00'
+    },
+    methods: {
+      valueChange (event) {
+        // 双向绑定
+        this.message = event.target.value
+      }
+    }
+  })
+</script>
+</html>

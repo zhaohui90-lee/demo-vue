@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <div id="app">
+    <div class="static" :class="{active: isActive, 'text-danger': hasError}">123</div>
+    <div :class="classObject">456</div>
+    <div :class="classObjectComputed">789</div>
+    <div :class="[activeClass, errorClass]">000</div>
+    <div :class="[isActive ? activeClass: '', errorClass]">111</div>
+    <my-component class="baz boo" style="font-size: 36px"></my-component>
+  </div>
+  <template id="cpn">
+    <div>
+      <p class="foo bar">Hi</p>
+    </div>
+  </template>
+</head>
+<body>
+
+<script>
+  Vue.component('my-component', {
+    template: '#cpn'
+  })
+  const app = new Vue({
+    data: {
+      isActive: true,
+      hasError: false,
+      classObject: {
+        active: true,
+        'text-danger': false
+      },
+      error: null,
+      activeClass: 'active',
+      errorClass: 'text-danger'
+    },
+    computed: {
+      classObjectComputed() {
+        // console.log(this.error.type)
+        return {
+          active: this.isActive && !this.hasError,
+          'text-danger': this.error && this.error.type === 'fatal'
+        }
+      }
+    }
+  }).$mount('#app')
+</script>
+</body>
+</html>

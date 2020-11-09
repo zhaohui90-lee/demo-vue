@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <cpn :number1="num1" @number1-change="number1Change"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <h2>prop: {{number1}}</h2>
+    <h2>data: {{dNumber1}}</h2>
+    <input type="text" v-model="dNumber1">
+    <!--    <input type="text" :value="dNumber1" @input="num1Input">-->
+  </div>
+</template>
+</body>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      num1: 0
+    },
+    methods: {
+      number1Change (value) {
+        this.num1 = Number(value)
+      }
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        props: {
+          number1: {
+            type: Number,
+            default: 0
+          }
+        },
+        data () {
+          return {
+            dNumber1: this.number1
+          }
+        },
+        // methods: {
+        //   num1Input(event) {
+        //     this.dNumber1 = event.target.value;
+        //     this.$emit('number1-change', this.dNumber1)
+        //   }
+        // }
+        watch: {
+          // 监听data
+          dNumber1 (newValue) {
+            console.log(newValue)
+            // this.dNumber1 = newValue;
+            this.$emit('number1-change', this.dNumber1)
+          }
+        }
+      }
+    }
+  })
+</script>
+</html>

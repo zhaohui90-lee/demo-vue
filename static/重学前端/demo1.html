@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>javaScript的Promise语法</title>
+</head>
+<body>
+
+</body>
+<script>
+  // Promise不返回真实结果 返回的是一个“承诺” 函数的调用方可以在合适的时机，选择等待这个承诺兑现
+  function sleep (duration) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(resolve, duration)
+    })
+  }
+
+  sleep(1000).then(() => console.log('finish'))
+
+  const r = new Promise(function (resolve, reject) {
+    console.log('a');
+    resolve();
+  });
+  r.then(()=>console.log('c'));
+  console.log('b')
+</script>
+</html>

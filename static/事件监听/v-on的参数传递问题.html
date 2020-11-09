@@ -9,33 +9,55 @@
 </head>
 
 <body>
-  <div id="app">
-    <button @click="btn1Click">按钮1</button>
-    <button @click="btn2Click">按钮2</button>
-    <!-- 在定义方法时，我们需要event对象时，同时需要其他参数 -->
-    <!-- 在调用方式，如何手动的获取浏览器参数的event对象：$event -->
-    <button @click="btn3Click('abc',$event)">按钮3</button>
-    <button @click="btn4Click(123)">按钮4</button>
-  </div>
+<div id="app">
+  <button @click="btn1Click">按钮1</button>
+  <button @click="btn2Click">按钮2</button>
+  <!-- 在定义方法时，我们需要event对象时，同时需要其他参数 -->
+  <!-- 在调用方式，如何手动的获取浏览器参数的event对象：$event -->
+  <button @click="btn3Click('abc',$event)">按钮3</button>
+  <button @click="btn4Click(123)">按钮4</button>
+  <br>
+  <a :[attr]="url">a标签</a>
+  <!--
+      在DOM中使用模板时这段代码会被转化为 `v-bind:[eventname]`
+      除非在实例中有一个名为 eventname 的property 否则代码不会工作
+    -->
+  <button @[eventName]="doSth">click事件</button>
+  <p>original message: {{message}}</p>
+  <p>reversed message: {{reversedMessage}}</p>
+</div>
 </body>
 <script>
   const app = new Vue({
     el: '#app',
     data: {
       // event: 'code'
+      attr: 'href',
+      url: 'https://www.baidu.com',
+      eventname: 'click',
+      message: 'hello'
     },
     methods: {
-      btn1Click() {
-        console.log('btn1Click');
+      doSth () {
+        console.log('click')
       },
-      btn2Click(event) {
-        console.log(event);
+      btn1Click () {
+        console.log('btn1Click')
       },
-      btn3Click(param, event) {
-        console.log(param, event);
+      btn2Click (event) {
+        console.log(event)
       },
-      btn4Click(param){
-        console.log(param);
+      btn3Click (param, event) {
+        console.log(param, event)
+      },
+      btn4Click (param) {
+        console.log(param)
+      }
+    },
+    computed: {
+      reversedMessage() {
+        console.log('execute...')
+        return this.message.split('').reverse().join('')
       }
     }
   })

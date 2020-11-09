@@ -4,8 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  
+  <div id="app">
+<!--  过滤器  -->
+    <h2>{{message | getFinalMessage}}</h2>
+    <h2>{{message}}</h2>
+  </div>
 </body>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 100.00
+    },
+    filters: {
+      getFinalMessage(price){
+        return '￥' + price.toFixed(2);
+      }
+    }
+  })
+</script>
 </html>

@@ -7,21 +7,21 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <div id="app">
-    <ul>
-      <li v-for="item in items">{{item}}</li>
-    </ul>
-    <button @click="btnClick">添加</button>
-  </div>
+<div id="app">
+  <ul>
+    <li v-for="item in items">{{item}}</li>
+  </ul>
+  <button @click="btnClick">添加</button>
+</div>
 </body>
 <script>
   const app = new Vue({
     el: '#app',
     data: {
-      items: ['a','b','c','d']
+      items: ['a', 'b', 'c', 'd']
     },
     methods: {
-      btnClick(){
+      btnClick () {
         // 可以响应式
         // this.items.push('22222')
 
@@ -30,7 +30,7 @@
 
         // this.items.shift();
 
-        // this.items.unshift('213213');  
+        // this.items.unshift('213213');
 
         // this.items.splice(2, 0, 'ff')
 
@@ -38,7 +38,7 @@
         // this.items[0] = '2222222'
 
         // set(修改的对象，索引值，修改后的值)
-        Vue.set(this.items, 0 , '132')
+        Vue.set(this.items, 0, '132')
       }
     }
   })

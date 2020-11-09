@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <h2>{{total}}</h2>
+  <cpn @cpn-increment="increment" @cpn-decrement="decrement"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <button @click="decrement">-</button>
+    <button @click="increment">+</button>
+  </div>
+</template>
+</body>
+<script>
+  const cpn = {
+    template: '#cpn',
+    data () {
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      increment () {
+        this.counter++
+        this.$emit('cpn-increment', this.counter)
+      },
+      decrement () {
+        this.counter--
+        this.$emit('cpn-decrement', this.counter)
+      }
+    }
+  }
+  const app = new Vue({
+    el: '#app',
+    data: {
+      total: 0
+    },
+    components: {
+      cpn
+    },
+    methods: {
+      increment (item) {
+        this.total = item
+      },
+      decrement (item) {
+        this.total = item
+      }
+    }
+  })
+</script>
+</html>

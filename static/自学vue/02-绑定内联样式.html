@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <div id="app">
+    <div :style="{color: activeColor, fontSize: fontSize + 'px'}">666</div>
+    <div :style="styleObject">999</div>
+    <div :style="[baseStyle, overridingStyles]">000</div>
+    <div :style="{display: ['-webkit-box', '-ms-flexbox', 'flex']}">111</div>
+  </div>
+</head>
+<body>
+<script>
+  const app = new Vue({
+    data: {
+      activeColor: 'red',
+      fontSize: 30,
+      styleObject: {
+        color: 'red',
+        fontSize: '30px'
+      },
+      baseStyle: {
+        color: 'red',
+        fontSize: '50px'
+      },
+      overridingStyles: {
+        color: 'blue'
+      }
+    }
+  }).$mount('#app')
+</script>
+</body>
+</html>

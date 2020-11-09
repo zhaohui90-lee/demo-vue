@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./vue-dusion-keyboard.js"></script>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+  <div class="payMoudle-right-title-inner text-main">
+    {{payTypeName}}支付<span class="pay-money-content-qrpage text-pink">0.00</span>元
+  </div>
+  <input type="text" id="input-charge-amount" data-mode="num" data-lock="lock" placeholder="点击输入充值金额">
+        <div id="app">
+          <vue-dusion-keyboard
+            ref="keyboard"
+            observer
+            window
+            static
+            :forbidden="['hand', 'num','input_value']"
+            :blur-hide="false"
+            size="mini"
+          ></vue-dusion-keyboard>
+        </div>
+
+        <div class="payModule-left pay-list">
+          <div class="pay-box">
+            <span class="charge-amount">50</span>
+          </div>
+          <div class="pay-box">
+            <span class="charge-amount">100</span>
+          </div>
+          <div class="pay-box">
+            <span class="charge-amount">200</span>
+          </div>
+          <div class="pay-box">
+            <span class="charge-amount">500</span>
+          </div>
+          <div class="pay-box">
+            <span class="charge-amount">1000</span>
+          </div>
+        </div>
+</body>
+<script>
+  new Vue({
+    el: "#app"
+  })
+  // $("#input-charge-amount").bind("input propertychange", function() {
+  //   $(".payMoudle-right-title-inner .pay-money-content-qrpage").html($(this).val())
+  //   // console.log($(this).val());
+  // })
+
+  $(".pay-list .pay-box .charge-amount").click(function() {
+        console.log($(this)[0].innerHTML);
+      })
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>高级函数</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script>
+  const arr = [10, 20, 30, 40, 50]
+  let sum = 0
+  for (const id in arr) {
+    sum += arr[id]
+  }
+  console.log(sum)
+
+  let sum1 = 0
+  for (const number of arr) {
+    sum1 += number
+  }
+  console.log(sum1)
+
+  // ES6语法 高级函数
+  // map/filter/reduce
+  let sum3 = arr.reduce((a, b) => a + b)
+  console.log(sum3)
+  // 编程范式：命令式编程/声明式编程
+  // 编程范式：面向对象编程（第一公民：对象）/函数式编程（第一公民：函数）
+  const numbers = [10, 151, 156, 16868, 15, 556, 154]
+  // filter的回调函数有一个要求，必须返回一个boolean值
+  let newNumbers = numbers.filter((num) => num < 500)
+  console.log(newNumbers)
+  // map函数的使用：每一个遍历的元素都执行相应的操作
+  let new2Numbers = numbers.map((num) => num * 2)
+  console.log(new2Numbers)
+  // reduce
+  let totalNumbers = numbers.reduce((prev, current) => prev + current, 0)
+  console.log(numbers)
+  console.log(totalNumbers)
+  let total = numbers.filter((num) => num < 500)
+    .map((num) => num * 2)
+    .reduce((prev, current) => prev + current, 0)
+  console.log(total)
+
+  console.log(window)
+</script>
+</html>
