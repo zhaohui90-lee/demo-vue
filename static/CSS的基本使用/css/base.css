@@ -1,0 +1,17 @@
+/* 指定css文件的编码 */
+@charset "UTF-8";
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  background-color: red;
+  font-size: 50px;
+  font-family: "黑体";
+}
+
+div {
+  font-size: 20px;
+  color: white;
+  /* background-color: red; */
+}
