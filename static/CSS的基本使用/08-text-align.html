@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box-1 {
+      background-color: #00ff00;
+
+      text-align: center;
+    }
+
+    .box-2 {
+      background-color: #000000;
+      text-align: left;
+    }
+
+    .box-3 {
+      background-color: #ff8800;
+      text-align: center;
+    }
+    .inner {
+      /* text-align: center; */
+      background-color: purple;
+      width: 200px;
+      /* 转化为 inline-block */
+      display: inline-block;
+    }
+
+    .box-4 {
+      background-color: #fff00f;
+      /* 左右两端对齐 对最后一行没有效果 */
+      text-align: justify;
+      /* 最后一行设置左右两端对齐 */
+      text-align-last: justify;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    text-align可以用于设置元素内容在元素中的水平对齐方式 
+      left: 左对齐
+      right: 右对齐
+      center: 正中间显示
+  -->
+
+  <div class="box-1">哈哈哈</div>
+  <div class="box-2">
+    <img src="https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg" alt="">
+  </div>
+  <div class="box-3">
+    <!-- 块级元素 占据一整行-->
+    <div class="inner">我是div元素</div>
+  </div>
+
+  <!-- 2. justify -->
+  <div class="box-4">哈哈哈哈</div>
+
+</body>
+</html>

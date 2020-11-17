@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 伪元素可以看成行内元素 */
+    span::before {
+      /* 使用伪元素 content字段不能删除 可以是空字符 */
+      content: "";
+      display: inline-block;
+      width: 100px;
+      height: 30px;
+      color: #ff0000;
+      margin-right: 20px;
+    }
+
+    span::after {
+      content: "abc";
+      color: purple;
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- ::before ::after 用来在一个元素的内容之前或之后插入其他内容(可以是文字 图片) -->
+  <span>我是span元素</span>
+</body>
+</html>

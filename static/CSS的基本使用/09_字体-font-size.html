@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box-1 {
+      font-family: "微软雅黑";
+      font-size: 18px;
+    }
+    p {
+      /* px代表像素 */
+      /* font-size: 24px; */
+
+      /* em相当于父元素的font-size */
+      /* font-size: 2em; */
+
+      /* chrome浏览器中 font-size大小 最小是12px */
+      font-size: 50%
+    }
+  </style>
+</head>
+<body>
+  <div class="box-1">
+    <!-- 从父元素继承font-size -->
+    <span>我是span元素</span>
+    <p>我是段落元素</p>
+  </div>
+</body>
+</html>

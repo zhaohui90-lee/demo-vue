@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+      样式的层叠 
+        前提: 使用相同的选择器 后面层叠前面的
+    */
+    
+    /* 
+      当选择器不同的时候 就不能按照基本层叠来理解了
+      需要知道选择器的权重:
+        !important: 10000
+        内联样式: 1000
+        id选择器: 100
+        类选择器 属性选择器 伪类: 10
+        元素: 1
+        通配符 *: 0
+     */
+     /* 
+      比较优先级的严谨方法:
+        从权重大的开始比较每一种权重的数量多少 数量多的则优先级高 即可结束比较
+        如果数量相同 比较下一个较小的权重 以此类推
+        如果所有权重比较完毕以后 发现数量都相同 就采取"就近原则"
+      */
+     #main {
+       color: #0000ff;
+     }
+     .box {
+       color: #0f0;
+     }
+     div {
+       color: #f00;
+     }
+  </style>
+</head>
+<body>
+  <div class="box-1 box-2 box-3">哈哈哈哈</div>
+
+  <div id="main" class="box" style="color: yellowgreen;">呵呵呵呵</div>
+</body>
+</html>
